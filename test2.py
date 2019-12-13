@@ -3,6 +3,7 @@ from gensim.test.utils import common_texts
 from gensim.models import Word2Vec
 from gensim.models import KeyedVectors
 
+
 word_vectors = gensim.models.KeyedVectors.load('TWEC_master/model/arxiv_9.model')
 
 from gensim.test.utils import datapath

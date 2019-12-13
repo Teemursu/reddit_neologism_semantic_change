@@ -2,6 +2,38 @@ import bz2file
 import json
 import os
 import process_data
+import process_sentences
+from gensim.utils import simple_preprocess
+
+
+def get_sentences(year, month):
+    DATA_DIR = os.path.join("D:\\", "reddit", "reddit_data", str(year))
+    filename = "RC_" + str(year) + "-" + str(month) + ".bz2"
+    sentences = []
+
+    print(DATA_DIR + "\\" + filename)
+    print("Reading the file '" + DATA_DIR + "\\" + filename + "' ...")
+
+    with bz2file.open(DATA_DIR + "\\" + filename, 'r',
+                        compresslevel=9,
+                        encoding=None,
+                        errors=None,
+                        newline=None) as f:
+        for i, line in enumerate(f):
+            data = json.loads(line)
+            sentences.append(data['body'])
+    print("Successfully imported data from the file '" + filename+"'.")
+    return sentences
+
+
+def write_data(year, month, comments):
+    print("Writing data for " + year + "/" + month + " sentences")
+
+    with open("comment_data/data" + year + "-" + month + ".txt", "w", encoding='utf-8') as json_f:
+        json_f.write("\n".join([' '.join(map(str, item)) for item in comments]))
+        json_f.close()
+        #json.dump(sentences, json_f)
+        #json_f.write("\n")
 
 
 years = ['2006', '2007', '2008', '2009', '2010', '2011',
@@ -12,45 +44,18 @@ months = ['01', '02', '03', '04', '05', '06',
 test_years = ['2009']
 test_months = ['01', '02', '12']
 
-
 for year in test_years:
-    DATA_DIR = os.path.join("D:\\", "reddit", "reddit_data", str(year))
     for month in test_months:
-        reddit_json = []
-        filename = "RC_" + str(year) + "-" + str(month) + ".bz2"
-        print(DATA_DIR + "\\" + filename)
-        print("Accessing " + DATA_DIR + "\\" + filename + "...")
-        try:
-            with bz2file.open(DATA_DIR + "\\" + filename, 'r',
-                              compresslevel=9,
-                              encoding=None,
-                              errors=None,
-                              newline=None) as f:
-                for i, line in enumerate(f):
-                    data = json.loads(line)
-                    reddit_json.append(data)
-                print("Successfully imported data from "+month+"."+year)
-                print("Processing data...")
-                try:
-                    #process_data.remove_keys(reddit_json)
-                    #process_data.get_date(reddit_json)
-                    #process_data.rename_keys(reddit_json)
-                    process_data.get_comments(reddit_json)
-                    print("Successfully processed the data!")
-                except:
-                    print("Error in one of the data processing functions! Check proces_data.py")
+        sentences = get_sentences(year, month)
+        comments = process_sentences.process_file(sentences)
+        #sentences = process_sentences(sentences)
+        write_data(year, month, comments)
 
-                print("Writing data to data" + year + month + ".txt")
-                try:
-                    with open("data" + year + "-" + month + ".txt", "w") as json_f:
-                        # for elem in reddit_json:
-                        #    print("An instance (dictionary) added to the data set:\n", elem)
-                        json.dump(process_data.get_comments(reddit_json), json_f)
-                        json_f.close()
-                        print("Successfully wrote data!")
-                except:
-                    print("Error in writing data")
-                f.close()
-        except OSError:
-            print("Error loading " + DATA_DIR + "\\" + filename)
 
+
+read_files = glob.glob("*.txt")
+
+with open("result.txt", "wb") as outfile:
+    for f in read_files:
+        with open(f, "rb") as infile:
+            outfile.write(infile.read())

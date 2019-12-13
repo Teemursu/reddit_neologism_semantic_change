@@ -1,5 +1,8 @@
 import datetime
 
+### This is an unused file for now. If specific values are needed from the Reddit JSON files (other than 'body'),
+### this can be used to extract those.
+
 def get_date(data):
     for dictionary in data:
         for k in list(dictionary.keys()):
