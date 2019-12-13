@@ -12,7 +12,7 @@ def get_sentences(year, month):
     sentences = []
 
     print(DATA_DIR + "\\" + filename)
-    print("Reading the file '" + DATA_DIR + "\\" + filename + "' ...")
+    print("Reading the file '" + DATA_DIR + "\\" + filename)
 
     with bz2file.open(DATA_DIR + "\\" + filename, 'r',
                         compresslevel=9,
@@ -22,6 +22,7 @@ def get_sentences(year, month):
         for i, line in enumerate(f):
             data = json.loads(line)
             sentences.append(data['body'])
+        f.close()
     print("Successfully imported data from the file '" + filename+"'.")
     return sentences
 
@@ -48,14 +49,7 @@ for year in test_years:
     for month in test_months:
         sentences = get_sentences(year, month)
         comments = process_sentences.process_file(sentences)
-        #sentences = process_sentences(sentences)
         write_data(year, month, comments)
 
 
 
-read_files = glob.glob("*.txt")
-
-with open("result.txt", "wb") as outfile:
-    for f in read_files:
-        with open(f, "rb") as infile:
-            outfile.write(infile.read())
