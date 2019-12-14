@@ -61,12 +61,12 @@ def write_data(year, month, comments):
 A list of years and months lets us loop through the data folders 
 and specify which file to write the comments to.
 '''
-years = ['2006', '2007', '2008', '2009', '2010', '2011',
+years = [ '2011',
          '2012', '2013', '2014', '2015', '2016', '2017']
 months = ['01', '02', '03', '04', '05', '06',
           '07', '08', '09', '10', '11', '12']
 
-test_years = ['2008', '2009', '2010', '2011']
+test_years = ['2006', '2007', '2008', '2009', '2010',]
 test_months = ['01', '02', '12']
 
 '''
