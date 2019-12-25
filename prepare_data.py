@@ -41,7 +41,7 @@ def get_sentences(year, month):
                 data = {k: v for k, v in data.items() if k == 'body'}
                 if data['body'] != '':
                     if data['body'] != '[deleted]' and line != '[removed]':
-                        with open("C:\\Users\\temep\\PycharmProjects\\semantic_change\\comment_data\\1-mil-comm-per-month\\one-mil-comments-" + year + "-" + month + ".txt",
+                        with open("comment_data/1-mil-comm-per-month/one-mil-comments-" + year + "-" + month + ".txt",
                                   "a", encoding='utf-8') as json_file:
                             json_file.write(str(" ".join(simple_preprocess(data['body']))))
                             json_file.write('\n')
