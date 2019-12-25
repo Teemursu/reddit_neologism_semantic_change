@@ -53,6 +53,33 @@ def get_sentences(year, month):
     print("...Successfully imported data from the file '" + filename+"'.")
 
 
+def get_compass():
+    '''
+    The TWEC requires a compass file
+    which contains all of the processed text data
+    '''
+    print("Reading files for the compass...")
+    read_files = glob.glob(
+        "C:\\Users\\temep\\PycharmProjects\\semantic_change\\comment_data\\1-mil-comm-per-month\\*.txt")
+
+    print("Creating the compass...")
+    with open("TWEC_master/examples/training/compass.txt", "wb") as outfile:
+        for f in read_files:
+            with open(f, "rb") as infile:
+                print("Appending the file '" + str(f) + "' into compass...")
+                outfile.write(infile.read())
+
+    print("Compass created! Would you like to find out the total number of sentences? y/n")
+    answer = input(str())
+    if answer == 'y':
+        print("Ok! Counting...")
+        count = 0
+        for line in open("TWEC_master/examples/training/compass.txt", encoding='utf-8').readlines(): count += 1
+        print("There are " + count + " sentences.")
+    else:
+        pass
+
+
 years = ['2006', '2007', '2008', '2009', '2010', '2011',
          '2012', '2013', '2014', '2015', '2016', '2017']
 months = ['01', '02', '03', '04', '05', '06',
@@ -64,4 +91,4 @@ for year in years:
         get_sentences(year, month)
 
 # After preparing the sliced corpus, we can create the atemporal embedding upon which we align other embeddigns.
-create_compass.get_compass()
+get_compass()
