@@ -4,9 +4,19 @@ Using Temporal Word Embeddings to Study Semantic Change in Neologisms
 
 As language changes and words shift in meaning, these developments are in addition reflected in cultural change. In this way, examining linguistic change possibly reveals sig-nificant aspects about the state of our society. In this sense, it may be valuable to examine neologisms (newly coined words or expressions) as a certain phenomenon of language change. More specifically, analyzing the semantic developments — occurring during the early existence of a neologism — could provide us with further insight into cultural shifts. 
 
+HOW TO:
+---------
+1. Download the [sliced corpus](https://www.dropbox.com/sh/pf8dripkoqo8wzb/AABhwGhUocRLUoacCCL_sAYua?dl=0)  into `comment_data/1-mil-comm-per-month/`. **OR** download the [raw files](https://files.pushshift.io/reddit/comments/) on your own into `comment_data/tobewrited` 
+2. Run `prepare_data.py` to create an atemporal compass based on the downloaded corpus.
+3. Run `TWEC_master/train_model.py` to train the model. See the [TWEC GitHub page](https://github.com/valedica/twec) for the requirements, etc.
+
 Data
 ---------
-Reddit corpus: https://www.dropbox.com/sh/pf8dripkoqo8wzb/AABhwGhUocRLUoacCCL_sAYua?dl=0
+Reddit corpus:
+https://www.dropbox.com/sh/pf8dripkoqo8wzb/AABhwGhUocRLUoacCCL_sAYua?dl=0
+
+Pushshift.io: 
+https://files.pushshift.io/reddit/comments/
 
 Reference
 ---------
