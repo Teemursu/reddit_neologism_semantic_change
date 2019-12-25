@@ -10,6 +10,8 @@ HOW TO:
 2. Run `prepare_data.py` to create an atemporal compass based on the downloaded corpus.
 3. Run `TWEC_master/train_model.py` to train the model. See the [TWEC GitHub page](https://github.com/valedica/twec) for the requirements, etc.
 
+**WIP:** Some toy data is included, with the intention that there will be toy models as well.
+
 Data
 ---------
 Reddit corpus:
