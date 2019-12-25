@@ -3,7 +3,7 @@ import json
 from gensim.utils import simple_preprocess
 import numpy
 import lzma
-import create_compass
+import glob
 
 def get_sentences(year, month):
     '''
@@ -60,7 +60,7 @@ def get_compass():
     '''
     print("Reading files for the compass...")
     read_files = glob.glob(
-        "C:\\Users\\temep\\PycharmProjects\\semantic_change\\comment_data\\1-mil-comm-per-month\\*.txt")
+        "comment_data/1-mil-comm-per-month/\\*.txt")
 
     print("Creating the compass...")
     with open("TWEC_master/examples/training/compass.txt", "wb") as outfile:
@@ -79,16 +79,22 @@ def get_compass():
     else:
         pass
 
+answer = input("""Do you have the sliced corpus already downloaded? y/n 
 
-years = ['2006', '2007', '2008', '2009', '2010', '2011',
-         '2012', '2013', '2014', '2015', '2016', '2017']
-months = ['01', '02', '03', '04', '05', '06',
-          '07', '08', '09', '10', '11', '12']
+Answering 'n' will skip getting data from encoded files which are downloaded from pushshift.io)\n""")
+               
+if answer == 'n':
+    years = ['2006', '2007', '2008', '2009', '2010', '2011',
+             '2012', '2013', '2014', '2015', '2016', '2017']
+    months = ['01', '02', '03', '04', '05', '06',
+              '07', '08', '09', '10', '11', '12']
 
-# Modify the list depending on which year/month slice(s) you want.
-for year in years:
-    for month in months:
-        get_sentences(year, month)
+    # Modify the list depending on which year/month slice(s) you want.
+    for year in years:
+        for month in months:
+            get_sentences(year, month)
+else:
+    pass
 
 # After preparing the sliced corpus, we can create the atemporal embedding upon which we align other embeddigns.
 get_compass()
