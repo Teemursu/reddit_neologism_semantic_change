@@ -4,6 +4,7 @@ https://github.com/williamleif/histwords/tree/master/viz
 
 
 This dir contains code and scripts for visualizing the histwords embeddings. 
+--------
 
 # png images
 
