@@ -2,7 +2,7 @@
 Using Temporal Word Embeddings to Study Semantic Change in Neologisms
 ---------
 
-As language changes and words shift in meaning, these developments are in addition reflected in cultural change. In this way, examining linguistic change possibly reveals sig-nificant aspects about the state of our society. In this sense, it may be valuable to examine neologisms (newly coined words or expressions) as a certain phenomenon of language change. More specifically, analyzing the semantic developments — occurring during the early existence of a neologism — could provide us with further insight into cultural shifts. 
+As language changes and words shift in meaning, these developments are in addition re-flected in cultural change. For instance, a language—in which words move in and out of a dynamic lexicon—displays the ideas and inventions that a culture might value. In this way, examining changes in lexicon possibly reveals significant aspects about the state of our society. Hence, it may be valuable to examine neologisms (newly coined words or ex-pressions) as a certain phenomenon of language change. More specifically, analyzing the semantic developments which occur during the early existence of a neologism could provide us with further insight into cultural shifts. 
 
 HOW TO:
 ---------
