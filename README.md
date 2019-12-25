@@ -1,7 +1,9 @@
 
 Using Temporal Word Embeddings to Study Semantic Change in Neologisms
 ---------
-
+Data
+---------
+Reddit corpus: https://www.dropbox.com/sh/pf8dripkoqo8wzb/AABhwGhUocRLUoacCCL_sAYua?dl=0
 Reference
 ---------
 
